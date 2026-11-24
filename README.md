@@ -1,107 +1,192 @@
-# IKEA-Gifting-Customer-Analytics-and-RFM-Segmentation
-An end to end data analytics project using SQL, Python, and Power BI
+# 🛋️ IKEA Gifting: Customer Analytics & RFM Segmentation
 
-Disclaimer
+**An end-to-end data analytics project using SQL, Python, and Power BI**
 
-IKEA Gifting is a fictional company name created for this educational portfolio project. It is not affiliated with, endorsed by, or representative of the real IKEA corporation in any way. All financial figures, customer counts, and business metrics shown in this project are derived entirely from a public, anonymized transactional dataset and do not reflect any real company's actual performance. The IKEA visual branding used in the dashboard is for design and storytelling purposes only.
+![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?logo=microsoftsqlserver&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?logo=powerbi&logoColor=black)
+![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white)
 
-Project Overview
+> ⚠️ **Disclaimer:** "IKEA Gifting" is a **fictional company name** created for this educational portfolio project. It is not affiliated with, endorsed by, or representative of the real IKEA corporation. All figures come from a public, anonymized dataset and do not reflect any real company's performance. The IKEA-style branding is used for design and storytelling only.
 
-This project simulates a real world analytics engagement for a fictional UK based gifting and home decor ecommerce brand, IKEA Gifting. The goal was to take raw, messy transactional data all the way through to a decision ready business intelligence dashboard, using the same workflow a data analyst would follow inside a real company: define the business problem first, clean and validate the data in SQL, build the analytical logic in Python, and deliver the insight through an interactive Power BI report.
+---
 
-Built as part of a public tutorial series to teach SQL, Python, and Power BI together as one connected skillset, rather than as three isolated topics.
+## 📑 Table of Contents
 
-My Thinking Process
+1. [Project Overview](#-project-overview)
+2. [Business Problem](#-business-problem)
+3. [Business Questions](#-business-questions-answered)
+4. [Key Insights](#-key-insights)
+5. [Data Source](#-data-source)
+6. [Tech Stack](#-tech-stack)
+7. [Project Workflow](#-project-workflow)
+8. [Dashboard Structure](#-dashboard-structure)
+9. [Code Samples](#-code-samples)
+10. [How to Reproduce](#-how-to-reproduce)
 
-Most portfolio projects start with a dataset and work backward to a question. I reversed that. I started by writing a Business Requirements Document before touching any data, forcing myself to define exactly what business decision this analysis needed to support. Every technical step after that traces back to one of the questions in that document.
+---
 
-I also deliberately chose a dataset that's less commonly used in existing tutorials (Online Retail II instead of the more saturated Olist dataset), and chose to genuinely clean the data rather than use a pre cleaned version, so this project includes real data quality problems: mixed date formats, invalid row types, duplicate transactions, and missing customer identifiers. Solving these is a large part of what this project actually demonstrates.
+## 📌 Project Overview
 
-Business Problem
+This project simulates a real-world analytics engagement for a fictional UK-based gifting and home décor e-commerce brand. The goal was to take **raw, messy transactional data** all the way to a **decision-ready Power BI dashboard**, following the workflow a data analyst would use inside a real company:
 
-The business wants to identify its most valuable customers and reduce churn among customers who are at risk of leaving. Leadership currently has no structured view of customer value, so retention efforts are reactive instead of targeted.
+**Define the problem → Clean the data in SQL → Build the logic in Python → Deliver insights in Power BI**
 
-Business Questions Answered
+It was built as part of a public tutorial series that teaches SQL, Python, and Power BI as **one connected skillset** rather than three isolated topics.
 
-Who are our most valuable customers, and how much revenue do they actually contribute?
-Which customers have gone quiet and are at risk of churning?
-How does customer value and retention trend across time, by month, quarter, and year?
-How does customer value and churn differ across geographic markets?
-What specific, concrete actions should the business take for each customer segment?
+### 🧠 My Thinking Process
 
+- **Question first, data second.** Most portfolio projects start with a dataset and work backward. I wrote a **Business Requirements Document** before touching any data, so every technical step traces back to a defined business question.
+- **A less common dataset.** I chose *Online Retail II* instead of the heavily used Olist dataset.
+- **Real data cleaning.** I cleaned the raw data myself instead of using a pre-cleaned version, so the project covers real problems: mixed date formats, invalid row types, duplicate transactions, and missing customer IDs.
 
- Key insights
-	
-• Total revenue of ~$17M across 5,881 customers
-• Overall churn rate of 50.9% (customers inactive for 90+ days)
-• The "At Risk" segment holds ~74% of total revenue, with an average customer value of ~$5.9K. These are high-value customers who have gone quiet and are the biggest retention opportunity
-• Churn peaked at 56.3% in 2010, then fell to 31.5% by 2011
+---
 
-Data Source
+## 🎯 Business Problem
 
-Online Retail II, UCI Machine Learning Repository, donated by Daqing Chen. A real, anonymized transactional dataset from a UK based, non store online retailer selling all occasion gift ware, covering December 2009 to December 2011. 1,067,371 raw transaction rows across two sheets. Licensed under Creative Commons Attribution 4.0 International.
+The business wants to **identify its most valuable customers** and **reduce churn** among customers at risk of leaving. Leadership has no structured view of customer value, so retention efforts are reactive instead of targeted.
 
-Tools and Tech Stack
+## ❓ Business Questions Answered
 
-Tool	Purpose in this project
+1. Who are the most valuable customers, and how much revenue do they contribute?
+2. Which customers have gone quiet and are at risk of churning?
+3. How do customer value and retention trend by month, quarter, and year?
+4. How do customer value and churn differ across countries?
+5. What concrete actions should the business take for each customer segment?
 
-SQL Server / SSMS	Data import, cleaning, deduplication, and exploratory querying on the full 1M+ row dataset
-Python (pandas)	RFM calculation, customer scoring, segmentation logic, and churn flagging
-Jupyter Notebook	Interactive development environment for the Python analysis
-Power BI Desktop	Three page interactive dashboard: executive summary and RFM deep dive
-DAX	Measures for customer counts, revenue totals, and average customer value
-Core Concepts Demonstrated
-RFM Analysis — scoring customers on Recency, Frequency, and Monetary value to quantify customer worth on a comparable scale
-Customer Segmentation — translating raw RFM scores into business meaningful groups (Champions, Loyal, At Risk, New, Needs Attention, Lost)
-Churn Definition and Flagging — applying a fixed inactivity threshold to identify customers at risk of lapsing
-Data Quality Handling — resolving mixed date formats, invalid type conversions, and duplicate detection using SQL window functions
-Dimensional Modeling for BI — structuring a single unified table so multiple report pages can share one clean source without manual relationships
-Interactive BI Design — slicers, bookmark based toggles, and a multi page navigation structure inside Power BI
+---
 
-Project Workflow
+## 💡 Key Insights
 
-Step 1 — Business Requirements Document. Defined scope, business questions, key definitions, and success criteria before any data work began.
+| Metric | Value |
+|---|---|
+| Total customers | **5,881** |
+| Total revenue | **~$17M** |
+| Overall churn rate | **50.9%** (inactive for 90+ days) |
+| Churn trend | Peaked at **56.3% in 2010**, fell to **31.5% in 2011** |
 
-Step 2 — SQL, Data Cleaning and Exploration. Imported both raw sheets into SQL Server, corrected data types, resolved a mixed date format issue affecting over half the dataset, removed 32,907 exact duplicate rows, and validated row counts at every step against the published UCI total.
+<!-- TODO: add the segment-level insight here after re-running the RFM scoring (see note in chat about the R_Score labels) -->
 
-Step 3 — Python, RFM Segmentation. Loaded the cleaned data into pandas, calculated Recency, Frequency, and Monetary value per customer, scored each customer on a 1 to 5 scale per dimension, and assigned each of the 5,881 customers to one of six segments. Added a 90 day churn flag.
+---
 
-Step 4 — Power BI, Dashboard Build. Merged the segmentation results back onto transaction level data to create a single analysis ready table, then built a three page report.
+## 📦 Data Source
 
-Dashboard Structure
+| | |
+|---|---|
+| **Dataset** | [Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii), UCI Machine Learning Repository |
+| **Donated by** | Daqing Chen |
+| **Description** | Real, anonymized transactions from a UK-based, non-store online retailer selling all-occasion gift ware |
+| **Period** | December 2009 to December 2011 |
+| **Size** | 1,067,371 raw rows across two sheets |
+| **License** | Creative Commons Attribution 4.0 International (CC BY 4.0) |
 
+---
 
-Page 1 — Business Overview: total customers, total revenue, churn %, and average customer value as headline KPIs, with a revenue/customer toggle, segment breakdowns, and month/quarter/year trend views. Filterable by month, quarter, year, country, segment, and churn status.
+## 🛠️ Tech Stack
 
-Page 2 — RFM Analysis: a segment performance summary table showing customer count, revenue, and average R/F/M score per segment, average customer value by segment, and churn % trended over time.
+| Tool | Purpose |
+|---|---|
+| **SQL Server / SSMS** | Data import, cleaning, deduplication, and exploration on the full 1M+ row dataset |
+| **Python (pandas)** | RFM calculation, customer scoring, segmentation, and churn flagging |
+| **Jupyter Notebook** | Interactive development environment for the Python analysis |
+| **Power BI Desktop** | Interactive dashboard with slicers, bookmarks, and page navigation |
+| **DAX** | Measures for customer counts, revenue totals, and average customer value |
 
-Sample SQL: Find missing data and Duplicate data
+### Core Concepts Demonstrated
 
-use ikka_sales_analysis;
--- CHECK 1 - MISSING CUSTOMER_ID 
-SELECT count(*) AS failed_csid from combine_sales_data where Customer_ID is NULL;
+- **RFM Analysis:** scoring customers on Recency, Frequency, and Monetary value on a comparable scale
+- **Customer Segmentation:** turning RFM scores into business groups (Champions, Loyal, At Risk, New, Need Attention, Lost)
+- **Churn Flagging:** applying a fixed 90-day inactivity threshold
+- **Data Quality Handling:** fixing mixed date formats, invalid type conversions, and duplicates using SQL window functions
+- **Dimensional Modeling for BI:** one unified table shared by all report pages, with no manual relationships
+- **Interactive BI Design:** slicers, bookmark-based toggles, and multi-page navigation
 
--- CHECK 2 NEGATIVE AND ZERO QUANTITY 
-SELECT COUNT(*) AS negative_quantity from combine_sales_data
-where Quantity <= 0;
+---
 
--- Check 3 - Missing Description 
-Select count(*) as missing_des from combine_sales_data
-where Description is NULL;
+## 🔄 Project Workflow
 
--- CHECK 4 EXACT DUPLICATE ROWS 
-Select Invoice, StockCode, Description, Quantity,InvoiceDate,
-Price, Customer_ID, Country, count(*) as exact_dup_count from combine_sales_data
-group by Invoice, StockCode, Description, Quantity,InvoiceDate,
+| Step | Stage | What I did |
+|---|---|---|
+| **1** | **Business Requirements** | Defined scope, business questions, key definitions, and success criteria before any data work |
+| **2** | **SQL: Clean & Explore** | Imported both raw sheets, fixed data types, resolved a mixed date format affecting over half the dataset, removed **32,907 exact duplicate rows**, and validated row counts at every step against the published UCI total |
+| **3** | **Python: RFM Segmentation** | Calculated Recency, Frequency, and Monetary value per customer, scored each on a 1 to 5 scale, assigned all **5,881 customers** to one of six segments, and added a 90-day churn flag |
+| **4** | **Power BI: Dashboard** | Merged segmentation results back onto transaction-level data to create one analysis-ready table, then built the report |
 
-Sample Python: RFM Scoring
+---
 
-rfm['R_Score'] = pd.qcut(rfm['Recency'], 5, labels=[5, 4, 3, 2, 1]).astype(int)
-rfm['F_Score'] = pd.qcut(rfm['Frequency'].rank(method='first'), 5, labels=[1, 2, 3, 4, 5]).astype(int)
-rfm['M_Score'] = pd.qcut(rfm['Monetary'], 5, labels=[1, 2, 3, 4, 5]).astype(int)
+## 📊 Dashboard Structure
 
-How to Reproduce This Project
-Download the Online Retail II dataset from the UCI Machine Learning Repository
-Run the SQL scripts in 01_sql in order to recreate the cleaned RetailCleaned table
-Export RetailCleaned to CSV and run the notebook in 02_python to generate the segmented dataset
-Open the Power BI file in 03_powerbi and point it to the exported Excel file to refresh
+### Page 1: Business Overview
+- Headline KPIs: **Total Customers, Total Revenue, Churn %, Avg Customer Value**
+- **Customer / Revenue toggle** (bookmark navigator)
+- Segment breakdowns and month / quarter / year trends
+- Slicers: Month, Quarter, Year, Country, Segment, Churn status
+
+### Page 2: RFM Analysis
+- **Segment Performance Summary** table: customers, revenue, and average R / F / M scores per segment
+- Average customer value by segment
+- Churn % trended by month, quarter, and year
+- **Segment / Country toggle**
+
+> 📸 *Add dashboard screenshots here, for example `![Business Overview](images/overview.png)`*
+
+---
+
+## 💻 Code Samples
+
+### SQL: Finding missing and duplicate data
+
+```sql
+USE ikka_sales_analysis;
+
+-- Check 1: Missing Customer_ID
+SELECT COUNT(*) AS failed_csid
+FROM combine_sales_data
+WHERE Customer_ID IS NULL;
+
+-- Check 2: Negative and zero quantity
+SELECT COUNT(*) AS negative_quantity
+FROM combine_sales_data
+WHERE Quantity <= 0;
+
+-- Check 3: Missing description
+SELECT COUNT(*) AS missing_des
+FROM combine_sales_data
+WHERE Description IS NULL;
+
+-- Check 4: Exact duplicate rows
+SELECT Invoice, StockCode, Description, Quantity,
+       InvoiceDate, Price, Customer_ID, Country,
+       COUNT(*) AS exact_dup_count
+FROM combine_sales_data
+GROUP BY Invoice, StockCode, Description, Quantity,
+         InvoiceDate, Price, Customer_ID, Country
+HAVING COUNT(*) > 1;
+```
+
+### Python: RFM scoring
+
+```python
+# Lower recency (days since last purchase) = better, so it gets the HIGHER score
+rfm["R_Score"] = pd.qcut(rfm["Recency"], 5, labels=[5, 4, 3, 2, 1]).astype(int)
+rfm["F_Score"] = pd.qcut(rfm["Frequency"].rank(method="first"), 5, labels=[1, 2, 3, 4, 5]).astype(int)
+rfm["M_Score"] = pd.qcut(rfm["Monetary"], 5, labels=[1, 2, 3, 4, 5]).astype(int)
+```
+
+---
+
+## 🔁 How to Reproduce
+
+1. Download the **Online Retail II** dataset from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/502/online+retail+ii).
+2. Run the SQL scripts in `01_sql/` in order to recreate the cleaned `RetailCleaned` table.
+3. Export `RetailCleaned` to CSV, then run the notebook in `02_python/` to generate the segmented dataset.
+4. Open the Power BI file in `03_powerbi/` and point it to the exported Excel file, then refresh.
+
+---
+
+## 👤 Author
+
+**Shivam Sharma**
+🔗 [LinkedIn](#) · 🔗 [GitHub](#)
+
+⭐ If you found this project helpful, please give it a star!
